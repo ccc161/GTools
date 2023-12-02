@@ -1,10 +1,22 @@
 import QtQuick
 import QtQuick.Controls
 
-
 Rectangle {
     color: "#FCFCFC"
     property int lastSelectIndex: -1
+
+    function refreshSidebarMenu() {
+        // call function to update menu
+        UIManager.updateSidebarMenu();
+        let total = UIManager.sidebarMenuItems.length
+        // Clear existing items in the model
+        dynamicModel.clear();
+        // Add new items based on UIManager.sidebarMenuItems
+        for (let i = 0; i < UIManager.sidebarMenuItems.length; ++i) {
+            let menuText = UIManager.sidebarMenuItems[i]
+            dynamicModel.append({"buttonText": menuText})
+        }
+    }
 
     ScrollView {
         anchors.fill: parent
@@ -16,9 +28,7 @@ Rectangle {
             model: ListModel {
                 id: dynamicModel
                 Component.onCompleted: {
-                    for (let i = 1; i <= 5; i++) {
-                        dynamicModel.append({text: "功能" + i})
-                    }
+                    refreshSidebarMenu()
                 }
             }
 
@@ -27,8 +37,9 @@ Rectangle {
                 height: 40
                 property alias backgroundColor: buttonBackgroundRectangle.color
                 Button {
+                    id: sidebarButton
                     anchors.fill: parent
-                    text: "按钮"
+                    text: model.buttonText
                     font.pixelSize: parent.height * 0.4
                     Rectangle {
                         id: buttonBackgroundRectangle

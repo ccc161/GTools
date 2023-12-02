@@ -12,6 +12,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 
+
+include_directories(include)
+
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
@@ -21,6 +24,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(GTools
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        include/UserInterfaceManager.h
+        src/UserInterfaceManager.cpp
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET GTools APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
