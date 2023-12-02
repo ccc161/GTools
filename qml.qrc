@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>resource/icon/mainWindow.png</file>
+        <file>qml/SidebarMenu.qml</file>
+        <file>qml/ToolStack.qml</file>
+    </qresource>
+</RCC>
