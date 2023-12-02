@@ -4,5 +4,6 @@
         <file>resource/icon/mainWindow.png</file>
         <file>qml/SidebarMenu.qml</file>
         <file>qml/ToolStack.qml</file>
+        <file>qml/WelcomePage.qml</file>
     </qresource>
 </RCC>

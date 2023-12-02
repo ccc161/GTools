@@ -17,14 +17,23 @@ Window {
         anchors.fill: parent
 
         SidebarMenu {
+            id: sidebarMenuObj
             Layout.fillHeight: true
             Layout.preferredWidth: parent.width * sidebarMenuFraction
         }
 
         ToolStack {
+            id: toolContentStack
             Layout.fillHeight: true
             Layout.preferredWidth: parent.width * (1 - sidebarMenuFraction)
+            // Connect the signal from SidebarMenu to the slot in ToolStack
+            Connections {
+                target: sidebarMenuObj
+                function onMenuItemSelected(selectId) {
+                    console.log(selectId)
+                    toolContentStack.currentIndex = selectId + 1;
+                }
+            }
         }
     }
-
 }

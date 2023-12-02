@@ -2,8 +2,13 @@ import QtQuick
 import QtQuick.Controls
 
 Rectangle {
+
+    id: sidebarMenuObj
     color: "#FCFCFC"
+
     property int lastSelectIndex: -1
+
+    signal menuItemSelected(int selectId)
 
     function refreshSidebarMenu() {
         // call function to update menu
@@ -25,6 +30,9 @@ Rectangle {
             id: menuList
             width: parent.width
             height: parent.height
+
+
+
             model: ListModel {
                 id: dynamicModel
                 Component.onCompleted: {
@@ -39,7 +47,7 @@ Rectangle {
                 Button {
                     id: sidebarButton
                     anchors.fill: parent
-                    text: model.buttonText
+                    text: model.buttonText // bind it to model property
                     font.pixelSize: parent.height * 0.4
                     Rectangle {
                         id: buttonBackgroundRectangle
@@ -57,6 +65,7 @@ Rectangle {
                         }
                         backgroundColor = "#CFCFCF"
                         lastSelectIndex = index
+                        menuItemSelected(index);// emit menu index is selected signal
                     }
                 }
             }

@@ -3,19 +3,15 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Rectangle {
-    color: "#CFDEDD"
+    color: "white"
+    property alias currentIndex: toolContentStack.currentIndex
 
     StackLayout {
         id: toolContentStack
         anchors.fill: parent
 
         // Initial content
-        Item {
-            Label {
-                text: "Default Content"
-                anchors.centerIn: parent
-            }
-        }
+        WelcomePage {}
 
         // Content for Button1
         Item {
@@ -32,6 +28,13 @@ Rectangle {
                 anchors.centerIn: parent
             }
         }
-        // Add more items for other buttons as needed
+
+        // Content for Button3
+        Item {
+            Label {
+                text: "Content for Button3"
+                anchors.centerIn: parent
+            }
+        }
     }
 }
