@@ -11,8 +11,8 @@ Rectangle {
     signal menuItemSelected(int selectId)
 
     function refreshSidebarMenu() {
-        // call function to update menu
-        UIManager.updateSidebarMenu();
+        // call function to update menu and tools
+        UIManager.updateMenuAndTools();
         let total = UIManager.sidebarMenuItems.length
         // Clear existing items in the model
         dynamicModel.clear();

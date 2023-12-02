@@ -30,7 +30,6 @@ Window {
             Connections {
                 target: sidebarMenuObj
                 function onMenuItemSelected(selectId) {
-                    console.log(selectId)
                     toolContentStack.currentIndex = selectId + 1;
                 }
             }
